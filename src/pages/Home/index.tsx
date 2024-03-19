@@ -1,4 +1,6 @@
 import React from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+
 import styles from './home.module.css';
 
 function Home() {
@@ -6,9 +8,16 @@ function Home() {
     <div className={styles.main}>
       <div className={styles.container}>
         <nav className={styles.nav}></nav>
-        <div>
-          <button className={styles.btn}>Google</button>
-          <button className={styles.btn}>Kakao</button>
+        <div className={styles.oauth}>
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+            useOneTap
+          />
         </div>
       </div>
     </div>
