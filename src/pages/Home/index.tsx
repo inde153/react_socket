@@ -1,15 +1,8 @@
 import React from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import axios from '../../api/axios';
-
 import styles from './home.module.css';
 
-const getAccessTokenByGoogleOuath = async (credential: string) => {
-  const res = await axios.post('/auth', {
-    headers: { google_key: credential },
-  });
-
-  console.log(res);
+const loginByGoogle = async () => {
+  window.open('http://localhost:8000/auth/google', '_self');
 };
 
 function Home() {
@@ -17,16 +10,11 @@ function Home() {
     <div className={styles.main}>
       <div className={styles.container}>
         <nav className={styles.nav}></nav>
-        <div className={styles.oauth}>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              const credential: string = credentialResponse.credential!;
-              getAccessTokenByGoogleOuath(credential);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />
+        <div>
+          <button className={styles.btn} onClick={() => loginByGoogle()}>
+            Sign in with Google
+          </button>
+          <button className={styles.btn}>Sign in with Kakao</button>
         </div>
       </div>
     </div>
