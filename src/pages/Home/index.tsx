@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './home.module.css';
-
-const loginByGoogle = async () => {
-  window.open('http://localhost:8000/auth/google', '_self');
-};
+import axios from '../../api/axios';
+import { requestURL } from '../../api/request';
 
 function Home() {
-  return (
-    <div className={styles.main}>
-      <div className={styles.container}>
-        <nav className={styles.nav}></nav>
-        <div>
-          <button className={styles.btn} onClick={() => loginByGoogle()}>
-            Sign in with Google
-          </button>
-          <button className={styles.btn}>Sign in with Kakao</button>
-        </div>
-      </div>
-    </div>
-  );
+  const navigate = useNavigate();
+  const [status, setStatus] = useState(false);
+
+  useEffect(() => {
+    axios
+      .post(`${requestURL.refresh}`)
+      .then((res) => (res.data === true ? setStatus(true) : null));
+  }, []);
+
+  return <>{console.log(status)}</>;
 }
 
 export default Home;

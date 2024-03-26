@@ -1,19 +1,26 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Home from './pages/Home';
+import Layout from './layout/layout';
+import Login from './pages/Login';
 import Chat from './pages/Chat';
-
-const clientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID!;
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/chat',
-    element: <Chat />,
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'chat',
+        element: <Chat />,
+      },
+    ],
   },
 ]);
 

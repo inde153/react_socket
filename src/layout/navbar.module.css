@@ -1,0 +1,26 @@
+@import '../reset.css';
+
+.nav {
+  width: 80vw;
+  height: 80px;
+  background-color: pink;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.navbar__menu li {
+  padding: 8px 12px;
+}
+
+.navbar__menu :hover {
+  background-color: rgb(207, 226, 153);
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+@import '../reset.css';
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+  width: 80vw;
+  background-color: #ddd;
+}
