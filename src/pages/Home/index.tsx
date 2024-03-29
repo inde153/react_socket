@@ -5,16 +5,11 @@ import axios from '../../api/axios';
 import { requestURL } from '../../api/request';
 
 function Home() {
-  const navigate = useNavigate();
-  const [status, setStatus] = useState(false);
-
-  useEffect(() => {
-    axios
-      .post(`${requestURL.refresh}`)
-      .then((res) => (res.data === true ? setStatus(true) : null));
-  }, []);
-
-  return <>{console.log(status)}</>;
+  return (
+    <>
+      <></>
+    </>
+  );
 }
 
 export default Home;
