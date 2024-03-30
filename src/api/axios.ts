@@ -3,6 +3,7 @@ import axios, { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 const apiInstance = axios.create({
   baseURL: 'http://localhost:8000',
   params: {},
+  withCredentials: true,
 });
 
 const onRequest = (
@@ -10,9 +11,17 @@ const onRequest = (
 ): InternalAxiosRequestConfig => {
   const accessToken: string | null = localStorage.getItem('auth');
 
-  config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 };
+
+// axios.interceptors.response.use(
+//   async (response: AxiosResponse) => {
+//     return response;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   },
+// );
 
 apiInstance.interceptors.request.use(onRequest);
 

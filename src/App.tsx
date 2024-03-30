@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import axios from './api/axios';
+import { requestURL } from './api/request';
 
 import Layout from './layout/layout';
 import Login from './pages/Login';
@@ -25,6 +27,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const isLoggedIn: string | null = localStorage.getItem('login');
+
+  const setLoginLocalStorage = () => {
+    localStorage.setItem('login', 'true');
+  };
+
+  useEffect(() => {
+    if (!isLoggedIn || isLoggedIn === 'false') {
+      axios
+        .post(`${requestURL.refresh}`)
+        .then((res) => (res.data === 'ok' ? setLoginLocalStorage() : null));
+    }
+  }, []);
+
   return (
     <>
       <RouterProvider router={router} />
