@@ -36,19 +36,21 @@ function Chat() {
     <div className={styles.container}>
       {isLoggedIn === 'true' ? (
         <>
-          <input
-            className={styles.input}
-            type="text"
-            value={messageInput}
-            onChange={(e) => setMessageInput(e.target.value)}
-            placeholder="Type a message"
-          />
-          <button onClick={sendMessage}>Send</button>
           <ul>
             {meChatMessages.map((message, index) => (
               <li key={index}>{`${message}`}</li>
             ))}
           </ul>
+          <div className={styles.inputContainer}>
+            <input
+              className={styles.input}
+              type="text"
+              value={messageInput}
+              onChange={(e) => setMessageInput(e.target.value)}
+              placeholder="Type a message"
+            />
+            <button onClick={sendMessage}>Send</button>
+          </div>
         </>
       ) : (
         <button onClick={() => navigate('/login')}>Go to Login</button>

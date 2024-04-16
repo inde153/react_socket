@@ -11,12 +11,12 @@ const loginByGoogle = async () => {
 
 function Login() {
   return (
-    <>
+    <div className={styles.container}>
       <button className={styles.btn} onClick={() => loginByGoogle()}>
         Sign in with Google
       </button>
       {/* <button className={styles.btn}>Sign in with Kakao</button> */}
-    </>
+    </div>
   );
 }
 

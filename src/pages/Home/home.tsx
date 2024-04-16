@@ -6,9 +6,9 @@ import { requestURL } from '../../api/request';
 
 function Home() {
   return (
-    <>
+    <div className={styles.container}>
       <></>
-    </>
+    </div>
   );
 }
 

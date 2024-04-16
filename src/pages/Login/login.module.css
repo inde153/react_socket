@@ -1,5 +1,14 @@
 @import '../../reset.css';
 
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(23, 177, 118);
+}
+
 .btn {
   margin: 200px 20px;
   width: 100%;
