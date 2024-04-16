@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
+import styles from './chat.module.css';
 
 interface Message {
   sender: string;
@@ -14,28 +15,29 @@ function Chat() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('login'));
   const [messageInput, setMessageInput] = useState('');
   const [chatMessages, setChatMessages] = useState<Message[]>([]);
+  const [meChatMessages, setMeChatMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     socket.on('message', (data: Message) => {
-      setChatMessages((prevMessages) => [...prevMessages, data]);
+      setMeChatMessages([data]);
+      setMessageInput('');
     });
 
     return () => {
       socket.off();
     };
   }, []);
+
   const sendMessage = () => {
-    socket.emit('message', messageInput, (chat: any) => {
-      setChatMessages((prevChats) => [...prevChats, chat]);
-      setMessageInput('');
-    });
+    socket.emit('message', messageInput);
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {isLoggedIn === 'true' ? (
         <>
           <input
+            className={styles.input}
             type="text"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
@@ -43,7 +45,7 @@ function Chat() {
           />
           <button onClick={sendMessage}>Send</button>
           <ul>
-            {chatMessages.map((message, index) => (
+            {meChatMessages.map((message, index) => (
               <li key={index}>{`${message}`}</li>
             ))}
           </ul>

@@ -24,3 +24,19 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.navbar__menu2 {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.navbar__menu2 li {
+  padding: 8px 12px;
+}
+
+.navbar__menu2 :hover {
+  background-color: rgb(207, 226, 153);
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -15,7 +15,7 @@ function Login() {
       <button className={styles.btn} onClick={() => loginByGoogle()}>
         Sign in with Google
       </button>
-      <button className={styles.btn}>Sign in with Kakao</button>
+      {/* <button className={styles.btn}>Sign in with Kakao</button> */}
     </>
   );
 }

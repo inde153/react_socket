@@ -11,6 +11,8 @@ function navbar() {
         <ul className={styles.navbar__menu}>
           <li onClick={() => navigate('/')}>Home</li>
           <li onClick={() => navigate('/chat')}>Chat</li>
+        </ul>
+        <ul className={styles.navbar__menu2}>
           <li onClick={() => navigate('/login')}>Login</li>
         </ul>
       </nav>
